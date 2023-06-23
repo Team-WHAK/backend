@@ -115,7 +115,6 @@ RSpec.describe "Tasks", type: :request do
           task_descr: 'wipe down surface',
           frequency: nil,
           due_date: 'daily',
-          user_id: user.id,
           user_id: user.id
         }
       }
@@ -134,7 +133,7 @@ RSpec.describe "Tasks", type: :request do
           task_name: 'clean',
           task_descr: 'wipe down surface',
           frequency: 'daily',
-          due_date: nil  ,
+          due_date: nil,
           user_id: user.id
         }
       }
@@ -158,8 +157,7 @@ RSpec.describe "Tasks", type: :request do
         task_name: 'clean',
         task_descr: 'wipe down surface',
         frequency: 'daily',
-        due_date: '23 Aug 2023',
-        user_id: user.id
+        due_date: '23 Aug 2023'
       )
 
       get '/tasks'
@@ -201,8 +199,7 @@ RSpec.describe "Tasks", type: :request do
         task_name: 'clean',
         task_descr: 'wipe down surface',
         frequency: 'daily',
-        due_date: '23 Aug 2023',
-        user_id: user.id
+        due_date: '23 Aug 2023'
       )
 
       get '/tasks'
@@ -237,8 +234,7 @@ RSpec.describe "Tasks", type: :request do
         task_name: 'clean',
         task_descr: 'wipe down surface',
         frequency: 'daily',
-        due_date: '23 Aug 2023',
-        user_id: user.id
+        due_date: '23 Aug 2023'
       )
 
       get '/tasks'
@@ -273,8 +269,7 @@ RSpec.describe "Tasks", type: :request do
         task_name: 'clean',
         task_descr: 'wipe down surface',
         frequency: 'daily',
-        due_date: '23 Aug 2023',
-        user_id: user.id
+        due_date: '23 Aug 2023'
       )
 
       get '/tasks'
@@ -309,8 +304,7 @@ RSpec.describe "Tasks", type: :request do
         task_name: 'clean',
         task_descr: 'wipe down surface',
         frequency: 'daily',
-        due_date: '23 Aug 2023',
-        user_id: user.id 
+        due_date: '23 Aug 2023'
       )
 
       get '/tasks'
@@ -345,8 +339,7 @@ RSpec.describe "Tasks", type: :request do
         task_name: 'clean',
         task_descr: 'wipe down surface',
         frequency: 'daily',
-        due_date: '23 Aug 2023',
-        user_id: user.id
+        due_date: '23 Aug 2023'
       )
 
       get '/tasks'
@@ -381,8 +374,7 @@ RSpec.describe "Tasks", type: :request do
         task_name: 'clean',
         task_descr: 'wipe down surface',
         frequency: 'daily',
-        due_date: '23 Aug 2023',
-        user_id: user.id
+        due_date: '23 Aug 2023'
       )
 
       get '/tasks'
@@ -417,8 +409,7 @@ RSpec.describe "Tasks", type: :request do
         task_name: 'clean',
         task_descr: 'wipe down surface',
         frequency: 'daily',
-        due_date: '23 Aug 2023',
-        user_id: user.id
+        due_date: '23 Aug 2023'
       )
 
       get '/tasks'
