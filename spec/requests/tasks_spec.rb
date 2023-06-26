@@ -9,7 +9,51 @@ RSpec.describe "Tasks", type: :request do
     )
   }
 
+  describe "GET /index" do
+    it 'gets a list of tasks' do
+      Task.create(
+        area: 'Kitchen',
+          item: 'Stove',
+          picture: 'img',
+          task_name: 'clean',
+          task_descr: 'wipe down surface',
+          frequency: 'daily',
+          due_date: 'daily',
+          user_id: user.id
+      )
+      get '/tasks'
+      task = JSON.parse(response.body)
+      expect(response).to have_http_status(200)
+      expect(task.length).to eq 1
+    end
+  end
+
   describe "POST /create" do
+    it 'creates a task' do
+      task_params = {
+        task: {
+          area: 'Kitchen',
+          item: 'Stove',
+          picture: 'img',
+          task_name: 'clean',
+          task_descr: 'wipe down surface',
+          frequency: 'daily',
+          due_date: 'daily',
+          user_id: user.id
+        }
+      }
+      post '/tasks', params: task_params
+      expect(response).to have_http_status(200)
+      task = Task.first
+      expect(task.area).to eq 'Kitchen'
+      expect(task.item).to eq 'Stove'
+      expect(task.picture).to eq 'img'
+      expect(task.task_name).to eq 'clean'
+      expect(task.task_descr).to eq 'wipe down surface'
+      expect(task.frequency).to eq 'daily'
+      expect(task.due_date).to eq 'daily'
+    end  
+      
     it "doesn't create a task without an area" do
       task_params = {
         task: {
@@ -435,6 +479,39 @@ RSpec.describe "Tasks", type: :request do
       expect(task['due_date']).to include("can't be blank") 
       
     end
-
   end
+
+  describe "DELETE /destroy" do
+    it "deletes a task with a valid id params" do
+      task1 = user.tasks.create(
+        area: 'Kitchen',
+          item: 'Stove',
+          picture: 'img',
+          task_name: 'clean',
+          task_descr: 'wipe down surface',
+          frequency: 'daily',
+          due_date: 'daily',
+      )
+      task2 = user.tasks.create(
+        area: 'Kitchen',
+          item: 'Stove',
+          picture: 'img',
+          task_name: 'clean',
+          task_descr: 'wipe down surface',
+          frequency: 'daily',
+          due_date: 'daily',
+      )
+      get '/tasks'
+
+      expect(Task.count).to eq(2)
+
+      task = Task.first
+      
+      delete "/tasks/#{task.id}"
+
+      expect(response).to have_http_status(410)
+      expect(Task.count).to eq(1)
+    end
+  end  
+
 end
